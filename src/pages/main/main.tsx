@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Card } from '../../components/card/card';
+import Logo from '../../components/logo/logo';
 
 type MainProps = {
   moviesCount: number;
@@ -14,13 +16,7 @@ const Main = ({ moviesCount = 0 }: MainProps): JSX.Element => (
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header film-card__head">
-        <div className="logo">
-          <a className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo />
 
         <ul className="user-block">
           <li className="user-block__item">
@@ -29,7 +25,7 @@ const Main = ({ moviesCount = 0 }: MainProps): JSX.Element => (
             </div>
           </li>
           <li className="user-block__item">
-            <a className="user-block__link">Sign out</a>
+            <Link className="user-block__link" to="/sign-in">Sign out</Link>
           </li>
         </ul>
       </header>

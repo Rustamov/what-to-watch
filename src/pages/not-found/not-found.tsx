@@ -1,4 +1,6 @@
-const PageNoFound = (): JSX.Element => (
+import { Link } from 'react-router-dom';
+
+const NotFoundScreen = (): JSX.Element => (
   <div className="page-404">
     <section className="block-404">
       <h2 className="catalog__title visually-hidden">404</h2>
@@ -7,7 +9,7 @@ const PageNoFound = (): JSX.Element => (
         Page not found.
         <br />
         <br />
-        <a href="/">Main page</a>
+        <Link to="/">Main page</Link>
       </p>
 
     </section>
@@ -28,4 +30,4 @@ const PageNoFound = (): JSX.Element => (
   </div>
 );
 
-export { PageNoFound };
+export { NotFoundScreen };
