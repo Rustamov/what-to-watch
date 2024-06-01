@@ -1,14 +1,37 @@
 import { Link } from 'react-router-dom';
 
-const Card = (): JSX.Element => (
-  <article className="small-film-card catalog__films-card">
-    <div className="small-film-card__image">
-      <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-    </div>
-    <h3 className="small-film-card__title">
-      <Link className="small-film-card__link" to="/movie/1">Macbeth</Link>
-    </h3>
-  </article>
-);
+import { Film } from '../../types/types';
 
-export { Card };
+type CardProps = Film & {
+  onMouseMove?: (id: number) => void;
+  onMouseLeave?: () => void;
+}
+
+const Card = ({
+  id,
+  name,
+  previewImage,
+  onMouseMove = () => void 0,
+  onMouseLeave = () => void 0,
+}: CardProps): JSX.Element => {
+  const handleMouseMove = () => {
+    onMouseMove(id);
+  };
+
+  return (
+    <article
+      className="small-film-card catalog__films-card"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="small-film-card__image">
+        <img src={previewImage} alt="Macbeth" width="280" height="175" />
+      </div>
+      <h3 className="small-film-card__title">
+        <Link className="small-film-card__link" to={`/movie/${id}`}>{name}</Link>
+      </h3>
+    </article>
+  );
+};
+
+export default Card;

@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
-import { Card } from '../../components/card/card';
+
+import { Film } from '../../types/types';
+
+import CardList from '../../components/card-list/card-list';
 import Logo from '../../components/logo/logo';
 
 type MainProps = {
-  moviesCount: number;
+  films: Film[];
 }
 
-const Main = ({ moviesCount = 0 }: MainProps): JSX.Element => (
+const Main = ({ films = [] }: MainProps): JSX.Element => (
   <>
     <section className="film-card">
       <div className="film-card__bg">
@@ -99,11 +102,18 @@ const Main = ({ moviesCount = 0 }: MainProps): JSX.Element => (
           </li>
         </ul>
 
-        <div className="catalog__films-list">
 
-          {Array.from({ length: moviesCount }, (nothing, index) => <Card key="index" />)}
+        <CardList
+          films={films}
+        />
+        {/* {films.map((film) => (
+            <Card
+              key={film.id}
+              {...film}
+            />
+          ))} */}
+        {/* {Array.from({ length: films.length }, (nothing, index) => <Card key="index"  />)} */}
 
-        </div>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
